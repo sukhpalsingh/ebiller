@@ -5,6 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+        <!-- styles -->
+        <link href="css/lib.css" rel="stylesheet">
+
         <title>Laravel</title>
 
         <!-- Fonts -->
@@ -91,5 +94,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="js/lib.js"></script>
     </body>
 </html>

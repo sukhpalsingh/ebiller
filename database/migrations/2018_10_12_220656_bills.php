@@ -15,6 +15,7 @@ class Bills extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->date('due_on');
             $table->unsignedInteger('bill_category_id');
             $table->unsignedInteger('account_id');

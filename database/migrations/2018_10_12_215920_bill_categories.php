@@ -16,7 +16,7 @@ class BillCategories extends Migration
         Schema::create('bill_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->unsignedInteger('icon_id');
+            $table->unsignedInteger('icon_id')->nullable();
             $table->unsignedInteger('parent');
             $table->integer('level')->default(0);
             $table->timestamps();

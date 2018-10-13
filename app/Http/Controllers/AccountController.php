@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
+use App\Icon;
 use Illuminate\Http\Request;
 
 class AccountController extends Controller
@@ -13,7 +15,8 @@ class AccountController extends Controller
      */
     public function index()
     {
-        return view('accounts.index', ['tab' => 'accounts']);
+        $accounts = Account::get();
+        return view('accounts.index', ['tab' => 'accounts', 'accounts' => $accounts]);
     }
 
     /**
@@ -23,7 +26,7 @@ class AccountController extends Controller
      */
     public function create()
     {
-        //
+        return view('accounts.form', ['tab' => 'accounts']);
     }
 
     /**
@@ -34,7 +37,12 @@ class AccountController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $account = Account::create($request->all());
+        $request->file('icon')->storeAs(
+            'icons',
+            'account_' . $account->id
+        );
+        return $this->edit($account->id);
     }
 
     /**
@@ -56,7 +64,9 @@ class AccountController extends Controller
      */
     public function edit($id)
     {
-        //
+        $account = Account::where('id', $id)
+            ->firstOrFail();
+        return view('accounts.form', ['tab' => 'accounts', 'account' => $account]);
     }
 
     /**
@@ -68,7 +78,12 @@ class AccountController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $account = Account::where('id', $id)
+            ->firstOrFail();
+
+        $account->fill($request->all())
+            ->update();
+        return $this->edit($account->id);
     }
 
     /**

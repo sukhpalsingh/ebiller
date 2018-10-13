@@ -17,7 +17,7 @@ class BillCategories extends Migration
             $table->increments('id');
             $table->string('name');
             $table->unsignedInteger('icon_id')->nullable();
-            $table->unsignedInteger('parent');
+            $table->unsignedInteger('parent')->nullable();
             $table->integer('level')->default(0);
             $table->timestamps();
         });

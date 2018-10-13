@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- styles -->
-        <link href="css/lib.css" rel="stylesheet">
+        <link href="/css/lib.css" rel="stylesheet">
 
         <title>Ebiller</title>
     </head>
@@ -56,6 +56,6 @@
         </main>
 
         <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="js/lib.js"></script>
+        <script type="text/javascript" src="/js/lib.js"></script>
     </body>
 </html>

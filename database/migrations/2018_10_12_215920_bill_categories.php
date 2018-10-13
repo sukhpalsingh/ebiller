@@ -20,8 +20,6 @@ class BillCategories extends Migration
             $table->unsignedInteger('parent');
             $table->integer('level')->default(0);
             $table->timestamps();
-
-            $table->foreign('icon_id')->references('id')->on('icons');
         });
     }
 

@@ -17,10 +17,8 @@ class Accounts extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->unsignedInteger('icon_id');
+            $table->unsignedInteger('icon_id')->nullable();
             $table->timestamps();
-
-            $table->foreign('icon_id')->references('id')->on('icons');
         });
     }
 

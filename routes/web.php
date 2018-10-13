@@ -16,3 +16,5 @@ Route::get('/', function () {
 });
 
 Route::resource('bills', 'BillController');
+Route::resource('accounts', 'AccountController');
+Route::resource('files', 'FileController');

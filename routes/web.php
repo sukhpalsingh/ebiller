@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome', ['tab' => 'home']);
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('bills', 'BillController');
 Route::resource('accounts', 'AccountController');
 Route::resource('files', 'FileController');
+
+Auth::routes();

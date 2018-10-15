@@ -2,10 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Account;
+use App\Bill;
+use App\BillCategory;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BillController extends Controller
 {
+    private $statusOptions = [
+        'Pending',
+        'Paid'
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +22,8 @@ class BillController extends Controller
      */
     public function index()
     {
-        return view('bills.index', ['tab' => 'bills']);
+        $bills = Bill::get();
+        return view('bills.index', ['tab' => 'bills', 'bills' => $bills]);
     }
 
     /**
@@ -23,7 +33,17 @@ class BillController extends Controller
      */
     public function create()
     {
-        return view('bills.form', ['tab' => 'bills']);
+        $categories = BillCategory::get();
+        $accounts = Account::get();
+        return view(
+            'bills.form',
+            [
+                'tab' => 'bills',
+                'categories' => $categories,
+                'accounts' => $accounts,
+                'statusOptions' => $this->statusOptions
+            ]
+        );
     }
 
     /**
@@ -34,7 +54,11 @@ class BillController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $data['due_on'] = Carbon::createFromFormat('d/m/Y', $data['due_on'])->format('Y-m-d');
+        $data['auto_pay'] = (isset($data['auto_pay']) && $data['auto_pay'] === 'true') ? true : false;
+        $bill = Bill::create($data);
+        $this->edit($bill->id);
     }
 
     /**
@@ -56,7 +80,19 @@ class BillController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bill = Bill::where('id', $id)->firstOrFail();
+        $categories = BillCategory::get();
+        $accounts = Account::get();
+        return view(
+            'bills.form',
+            [
+                'tab' => 'bills',
+                'categories' => $categories,
+                'accounts' => $accounts,
+                'statusOptions' => $this->statusOptions,
+                'bill' => $bill
+            ]
+        );
     }
 
     /**

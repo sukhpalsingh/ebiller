@@ -11,6 +11,9 @@
         <title>Ebiller</title>
     </head>
     <body>
+        <!-- MDB core JavaScript -->
+        <script type="text/javascript" src="/js/lib.js"></script>
+
         <!--Main Navigation-->
         <header>
 
@@ -54,8 +57,5 @@
                 @yield('content')
             </div>
         </main>
-
-        <!-- MDB core JavaScript -->
-        <script type="text/javascript" src="/js/lib.js"></script>
     </body>
 </html>

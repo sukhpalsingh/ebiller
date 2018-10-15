@@ -17,10 +17,13 @@ mix.js('resources/assets/js/app.js', 'public/js')
        'node_modules/mdbootstrap/css/bootstrap.min.css',
        'node_modules/mdbootstrap/css/mdb.min.css',
        'node_modules/mdbootstrap/css/style.min.css',
+       'node_modules/jquery-ui/themes/base/theme.css',
+       'node_modules/jquery-ui/themes/base/datepicker.css',
    ], 'public/css/lib.css')
    .scripts([
         'node_modules/mdbootstrap/js/jquery-3.3.1.min.js',
         'node_modules/mdbootstrap/js/bootstrap.min.js',
         'node_modules/mdbootstrap/js/popper.min.js',
         'node_modules/mdbootstrap/js/mdb.min.js',
+        'node_modules/jquery-ui/ui/widgets/datepicker.js',
    ], 'public/js/lib.js');

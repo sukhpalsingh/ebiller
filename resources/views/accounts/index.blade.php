@@ -7,25 +7,25 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="text-right" colspan="3">
+                            <th class="text-right" colspan="4">
                                 <a
                                     class="btn btn-primary btn-rounded waves-effect waves-light"
                                     href="/accounts/create"
                                 >Add Account</a>
                             </th>
                         </tr>
-                        @if ($accounts->count() > 0)
-                            <tr>
-                                <th>Name</th>
-                                <th>Descrption</th>
-                                <th width="10">&nbsp;</th>
-                            </tr>
-                        @endif
                     </thead>
                     <tbody>
                         @if ($accounts->count() > 0)
                             @foreach ($accounts as $account)
                                 <tr>
+                                    <td>
+                                        <img
+                                            src="{{ asset('storage/' . $account->icon->path) }}"
+                                            class="img-thumbnail"
+                                            style="height: 60px"
+                                        >
+                                    </td>
                                     <td>{{ $account -> name }}</td>
                                     <td>{{ $account -> description }}</td>
                                     <td>

@@ -19,4 +19,12 @@ class Account extends Model
      * @var array
      */
     protected $fillable = ['name', 'description', 'icon_id'];
+
+    /**
+     * Get the icon record associated with the account.
+     */
+    public function icon()
+    {
+        return $this->hasOne('App\Icon', 'id', 'icon_id');
+    }
 }

@@ -76,7 +76,11 @@ class AccountController extends Controller
     {
         $account = Account::where('id', $id)
             ->firstOrFail();
-        return view('accounts.form', ['tab' => 'accounts', 'account' => $account]);
+
+        $icon = Icon::where('id', $account->icon_id)
+            ->first();
+
+        return view('accounts.form', ['tab' => 'accounts', 'account' => $account, 'icon' => $icon]);
     }
 
     /**
@@ -91,8 +95,18 @@ class AccountController extends Controller
         $account = Account::where('id', $id)
             ->firstOrFail();
 
-        $account->fill($request->all())
+        $data = $request->all();
+        if ($request->has('icon')) {
+            $path = $request->file('icon')->store('icons');
+            $icon = new Icon();
+            $icon->path = $path;
+            $icon->save();
+            $data['icon_id'] = $icon->id;
+        }
+
+        $account->fill($data)
             ->update();
+
         return $this->edit($account->id);
     }
 

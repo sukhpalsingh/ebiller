@@ -12,6 +12,7 @@
                     style="color: #757575;"
                     name="account-form"
                     action="/accounts{{ $account ? '/' . $account->id : '' }}"
+                    enctype="multipart/form-data"
                     method="POST">
                     {{ csrf_field() }}
                     @if (isset($account))
@@ -32,10 +33,14 @@
                     <div class="form-group row">
                         <label for="icon" class="col-sm-2 col-form-label">Icon</label>
                         <div class="col-sm-10">
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="icon" name="icon" aria-describedby="icon">
-                                <label class="custom-file-label" for="icon">Choose file</label>
-                            </div>
+                            @if (empty($icon))
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="icon" name="icon" aria-describedby="icon">
+                                    <label class="custom-file-label" for="icon">Choose file</label>
+                                </div>
+                            @else
+                                <img src="{{ asset('storage/' . $icon->path) }}" class="img-thumbnail float-left" width="100px">
+                            @endif
                         </div>
                     </div>
                     @if (isset($account))

@@ -11,7 +11,7 @@
                     class="text-center"
                     style="color: #757575;"
                     name="account-form"
-                    action="/accounts{{ $account ? '/' . $account->id : '' }}"
+                    action="/accounts{{ isset($account) ? '/' . $account->id : '' }}"
                     enctype="multipart/form-data"
                     method="POST">
                     {{ csrf_field() }}

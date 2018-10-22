@@ -96,7 +96,7 @@ class AccountController extends Controller
             ->firstOrFail();
 
         $data = $request->all();
-        if ($request->has('icon')) {
+        if ($request->hasFile('icon')) {
             $path = $request->file('icon')->store('icons');
             $icon = new Icon();
             $icon->path = $path;

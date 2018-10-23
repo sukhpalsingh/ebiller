@@ -60,7 +60,7 @@
                     <div class="form-check row">
                         <div class="col-sm-10">
                             <input type="checkbox" class="form-control-input" id="auto_pay" name="auto_pay" value="true"
-                                {{ $bill -> auto_pay ? 'checked="checked"' : ''}}>
+                                {{ isset($bill -> auto_pay) ? 'checked="checked"' : ''}}>
                             <label for="auto_pay" class="col-sm-2 col-form-label">Auto Pay</label>
                         </div>
                     </div>

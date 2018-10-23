@@ -14,6 +14,7 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::resource('bills', 'BillController');
+Route::resource('bill-categories', 'BillCategoryController');
 Route::resource('accounts', 'AccountController');
 Route::resource('files', 'FileController');
 

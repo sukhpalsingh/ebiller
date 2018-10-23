@@ -28,6 +28,10 @@
                         <th class="text-right" colspan="4">
                             <a
                                 class="btn btn-primary btn-rounded waves-effect waves-light btn-sm"
+                                href="/bill-categories"
+                            >Bill Categories</a>
+                            <a
+                                class="btn btn-primary btn-rounded waves-effect waves-light btn-sm"
                                 href="/bills/create"
                             >Add Bill</a>
                         </th>

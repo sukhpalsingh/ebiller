@@ -20,11 +20,13 @@
                             @foreach ($accounts as $account)
                                 <tr>
                                     <td>
-                                        <img
-                                            src="{{ asset('storage/' . $account->icon->path) }}"
-                                            class="img-thumbnail"
-                                            style="height: 60px"
-                                        >
+                                        @if (isset($account->icon))
+                                            <img
+                                                src="{{ asset('storage/' . $account->icon->path) }}"
+                                                class="img-thumbnail"
+                                                style="height: 60px"
+                                            >
+                                        @endif
                                     </td>
                                     <td>{{ $account -> name }}</td>
                                     <td>{{ $account -> description }}</td>

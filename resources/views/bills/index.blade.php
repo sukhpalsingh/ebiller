@@ -5,18 +5,25 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table">
-                    <thead>
-                        <th>Due Date</th>
-                        <th>Category</th>
-                        <th>Status</th>
-                    </thead>
                     <tbody>
                         @if ($bills->count() > 0)
                             @foreach ($bills as $bill)
                                 <tr>
                                     <td>{{ $bill -> due_on }}</td>
-                                    <td>{{ $bill -> bill_category_id }}</td>
-                                    <td>{{ $bill -> status }}</td>
+                                    <td>
+                                        <img
+                                            src="{{ asset('storage/' . $bill -> billCategory -> icon -> path) }}"
+                                            class="img-thumbnail"
+                                            style="height: 60px"
+                                        >
+                                    </td>
+                                    <td>
+                                        {{ $bill -> billCategory -> name }}
+                                    </td>
+                                    <td>
+                                        <p>${{ $bill -> amount }}</p>
+                                        <p>{{ $bill -> status }}</p>
+                                    </td>
                                     <td width="20">
                                         <a href="/bills/{{ $bill -> id }}/edit" class="btn btn-primary btn-sm">Edit</a>
                                     </td>

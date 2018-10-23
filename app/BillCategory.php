@@ -19,4 +19,12 @@ class BillCategory extends Model
      * @var array
      */
     protected $fillable = ['name', 'icon_id'];
+
+    /**
+     * Get the icon record associated with the bill category.
+     */
+    public function icon()
+    {
+        return $this->hasOne('App\Icon', 'id', 'icon_id');
+    }
 }

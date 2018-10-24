@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\File;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class FileController extends Controller
 {
@@ -55,7 +57,14 @@ class FileController extends Controller
      */
     public function show($id)
     {
-        //
+        $file = File::where('id', $id)
+            ->firstOrFail();
+
+        $path = storage_path('app/public/' . $file->path);
+        return response()->file($path, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="Bill.pdf"'
+        ]);
     }
 
     /**

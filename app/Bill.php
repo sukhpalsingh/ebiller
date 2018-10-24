@@ -18,7 +18,19 @@ class Bill extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'due_on', 'bill_category_id', 'account_id', 'status', 'amount', 'auto_pay'];
+    protected $fillable = ['name', 'due_on', 'bill_category_id', 'account_id', 'file_id', 'status', 'amount', 'auto_pay'];
+
+    /**
+     * The attributes that should be mutated to dates.
+     *
+     * @var array
+     */
+    protected $dates = [
+        'due_on',
+        'created_at',
+        'updated_at',
+        'deleted_at'
+    ];
 
     /**
      * Get the icon record associated with the account.
@@ -26,5 +38,13 @@ class Bill extends Model
     public function billCategory()
     {
         return $this->hasOne('App\BillCategory', 'id', 'bill_category_id');
+    }
+
+    /**
+     * Get the icon record associated with the account.
+     */
+    public function file()
+    {
+        return $this->hasOne('App\File', 'id', 'file_id');
     }
 }

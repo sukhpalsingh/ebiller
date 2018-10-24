@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="card col-md-10">
-            <h5 class="card-header info-color white-text text-center py-4">
-                <strong>New Bill</strong>
+        <div class="card col-md-10 p-0">
+            <h5 class="card-header info-color white-text text-center">
+                <strong>{{ isset($bill) ? $bill->due_on->format('jS F Y') . ' - ' . $bill->billCategory->name . ' Bill'  : 'New Bill' }}</strong>
             </h5>
             <div class="card-body px-lg-5 pt-0">
                 <form style="color: #757575;" name="bill-form"
@@ -19,7 +19,13 @@
                     <div class="form-group row mt-3">
                         <label for="name" class="col-sm-2 col-form-label text-right">Due Date *</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="due_on" name="due_on" value="{{ $bill -> due_on ?? ''}}">
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="due_on"
+                                name="due_on"
+                                value="{{ $bill->due_on ? $bill->due_on->format('d/m/Y') : ''}}"
+                            >
                         </div>
                     </div>
                     <div class="form-group row mt-3">
@@ -64,21 +70,22 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-check row mt-3">
-                        <label for="file" class="col-sm-2 col-form-label">File</label>
+                    <div class="form-group row mt-3">
+                        <label for="file" class="col-sm-2 col-form-label text-right">File</label>
                         <div class="col-sm-10">
-                            @if (empty($file))
+                            @if (empty($bill->file))
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="file" name="file" aria-describedby="file">
                                     <label class="custom-file-label" for="file">Choose file</label>
                                 </div>
                             @else
-                                attached file
+                                <a href="/files/{{ $bill->file->id }}" class="btn btn-link text-left" target="_blank">View</a>
+                                <a href="/files/{{ $bill->file->id }}/delete" class="btn btn-link text-left" target="_blank">Delete</a>
                             @endif
                         </div>
                     </div>
-                    <div class="form-check row">
-                        <div class="col-sm-10">
+                    <div class="form-group row">
+                        <div class="col-sm-10 offset-sm-2">
                             <input type="checkbox" class="form-control-input" id="auto_pay" name="auto_pay" value="true"
                                 {{ isset($bill -> auto_pay) ? 'checked="checked"' : ''}}>
                             <label for="auto_pay" class="col-sm-2 col-form-label">Auto Pay</label>

@@ -36,17 +36,17 @@
                     @if (isset($tab))
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item {{ $tab === 'home' ? 'active' : ''}}">
-                                <a class="nav-link waves-effect" href="/">Home</a>
+                            <li class="nav-item">
+                                <a class="nav-link waves-effect {{ $tab === 'home' ? ' ' : ' text-muted'}}" href="/">Home</a>
                             </li>
-                            <li class="nav-item {{ $tab === 'bills' ? 'active' : ''}}">
-                                <a class="nav-link waves-effect" href="/bills">Bills</a>
+                            <li class="nav-item">
+                                <a class="nav-link waves-effect {{ $tab === 'bills' ? 'active' : ' text-muted'}}" href="/bills">Bills</a>
                             </li>
-                            <li class="nav-item {{ $tab === 'accounts' ? 'active' : ''}}">
-                                <a class="nav-link waves-effect" href="/accounts">Accounts</a>
+                            <li class="nav-item ">
+                                <a class="nav-link waves-effect {{ $tab === 'accounts' ? 'active' : ' text-muted'}}" href="/accounts">Accounts</a>
                             </li>
-                            <li class="nav-item {{ $tab === 'files' ? 'active' : ''}}">
-                                <a class="nav-link waves-effect" href="/files">Files</a>
+                            <li class="nav-item">
+                                <a class="nav-link waves-effect {{ $tab === 'files' ? 'active' : ' text-muted'}}" href="/files">Files</a>
                             </li>
                         </ul>
                     </div>
@@ -54,16 +54,17 @@
 
                     <!-- Authentication Links -->
                     @guest
-                        <li><a href="{{ route('login') }}">Login</a></li>
+                        
                     @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                                    {{ Auth::user()->name }}
+                                </a>
 
-                            <ul class="dropdown-menu">
-                                <li>
+                                <div class="dropdown-menu">
                                     <a href="{{ route('logout') }}"
+                                        class="dropdown-item"
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         Logout
                                     </a>
@@ -71,8 +72,8 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
-                                </li>
-                            </ul>
+                                </div>
+                            </li>
                         </li>
                     @endguest
 

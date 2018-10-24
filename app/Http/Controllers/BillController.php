@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Account;
 use App\Bill;
 use App\BillCategory;
+use App\File;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -114,7 +115,22 @@ class BillController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $bill = Bill::where('id', $id)
+            ->firstOrFail();
+
+        $data = $request->all();
+        $data['auto_pay'] = (isset($data['auto_pay']) && $data['auto_pay'] === 'true') ? true : false;
+        if ($request->hasFile('file')) {
+            $path = $request->file('file')->store('files');
+            $file = new File();
+            $file->category = 'bill';
+            $file->path = $path;
+            $file->save();
+            $data['file_id'] = $file->id;
+        }
+
+        $bill->fill($data)
+            ->update();
     }
 
     /**

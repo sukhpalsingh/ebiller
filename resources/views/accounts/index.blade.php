@@ -32,6 +32,7 @@
                                     <td>{{ $account -> description }}</td>
                                     <td>
                                         <a href="/accounts/{{ $account -> id }}/edit" class="btn btn-primary btn-sm">Edit</a>
+                                        <a href="/accounts/{{ $account -> id }}/transactions" class="btn btn-primary btn-sm">Transactions</a>
                                     </td>
                                 </tr>
                             @endforeach

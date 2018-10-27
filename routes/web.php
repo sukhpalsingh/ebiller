@@ -16,6 +16,10 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::resource('bills', 'BillController');
 Route::resource('bill-categories', 'BillCategoryController');
 Route::resource('accounts', 'AccountController');
+
+Route::get('accounts/{accountId}/transactions/import/create', 'AccountTransactionController@importCreate');
+Route::post('accounts/{accountId}/transactions/import', 'AccountTransactionController@import');
+Route::resource('accounts.transactions', 'AccountTransactionController');
 Route::resource('files', 'FileController');
 
 Auth::routes();

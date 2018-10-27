@@ -16,6 +16,7 @@ class Transactions extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('account_id');
+            $table->date('date');
             $table->string('type', 6);
             $table->string('type_details')->nullable();
             $table->double('amount', 8, 2);

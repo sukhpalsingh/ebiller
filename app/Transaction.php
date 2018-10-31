@@ -18,7 +18,7 @@ class Transaction extends Model
      *
      * @var array
      */
-    protected $fillable = ['date', 'type', 'type_details', 'amount', 'description', 'balance'];
+    protected $fillable = ['account_id', 'date', 'type', 'type_details', 'amount', 'description', 'balance'];
 
     /**
      * Get the account record associated with the account.

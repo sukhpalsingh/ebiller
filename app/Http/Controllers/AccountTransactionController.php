@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Account;
 use App\Transaction;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AccountTransactionController extends Controller
@@ -88,6 +89,61 @@ class AccountTransactionController extends Controller
     public function importCreate($accountId)
     {
         $account = Account::where('id', $accountId)->firstOrFail();
-        
+        return view('transactions.import', ['tab' => 'accounts', 'account' => $account]);
+    }
+
+    public function import($accountId, Request $request)
+    {
+        if (! $request->hasFile('file')) {
+            abort(400, 'File is required.');
+        }
+
+        $fileObj = $request->file('file');
+        $file = $fileObj->openFile('r');
+
+        $columns = [];
+        $sampleData = [
+            'date' => null,
+            'type' => null,
+            'type_details' => null,
+            'amount' => null,
+            'description' => null,
+            'balance' => null
+        ];
+
+        while($values = $file->fgetcsv()) {
+            if (empty($values[0])) {
+                continue;
+            }
+
+            if (empty($columns)) {
+                $columns = $values;
+                continue;
+            }
+
+            $rowData = array_combine($columns, $values);
+
+            if (empty($rowData['date']) || empty($rowData['amount']) || empty($rowData['balance'])) {
+                abort(400, 'Invalid data');
+            }
+
+            $data = [];
+            foreach ($sampleData as $column => $value) {
+                if (empty($rowData[$column])) {
+                    $data[$column] = $value;
+                } else {
+                    $data[$column] = $rowData[$column];
+                }
+            }
+
+            $data['date'] = Carbon::createFromFormat('d M y', $data['date'])->format('Y-m-d');
+            $data['amount'] = floatval($data['amount']);
+            $data['balance'] = floatval($data['balance']);
+            $data['type'] = $data['amount'] < 0 ? 'debit' : 'credit';
+            $data['account_id'] = $accountId;
+
+            Transaction::create($data);
+        }
+
     }
 }

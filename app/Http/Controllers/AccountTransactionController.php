@@ -142,7 +142,13 @@ class AccountTransactionController extends Controller
             $data['type'] = $data['amount'] < 0 ? 'debit' : 'credit';
             $data['account_id'] = $accountId;
 
-            Transaction::create($data);
+            $transaction = Transaction::where('date', $data['date'])
+                ->where('amount', $data['amount'])
+                ->where('balance', $data['balance'])
+                ->first();
+            if (empty($transaction)) {
+                Transaction::create($data);
+            }
         }
 
     }

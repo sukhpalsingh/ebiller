@@ -5,8 +5,9 @@ RUN apt-get update -qq
 RUN apt-get install -qq curl git unzip libpng-dev
 RUN apt-get install -qq gnupg libpng-dev
 
-RUN echo "deb http://deb.nodesource.com/node_7.x stretch main" > /etc/apt/sources.list.d/nodesource.list && \
-    curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
+RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
+
+RUN apt-get install nodejs
 
 RUN apt-get install -qq nginx nodejs
 

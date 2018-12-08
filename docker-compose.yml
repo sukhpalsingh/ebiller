@@ -1,22 +1,20 @@
 version: '3'
 services:
     app:
-        build:
-          context: .
+        build: .
         volumes:
-            - ./:/var/www/html
-        depends_on:
-            - db
+          - ./:/var/www/html
+        ports:
+          - 8080:80
+        links:
+          - db
 
     db:
-      image: mysql
-      command: --default-authentication-plugin=mysql_native_password
-      restart: always
-      environment:
-        MYSQL_ROOT_PASSWORD: root
-
-    adminer:
-      image: adminer
-      restart: always
+      image: mysql:5
       ports:
-        - 8080:8080
+        - 3306:3306
+      environment:
+        MYSQL_ROOT_PASSWORD: ebiller_root_password
+        MYSQL_DATABASE: ebiller_db
+        MYSQL_USER: ebiller_admin
+        MYSQL_PASSWORD: ebiller_password

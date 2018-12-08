@@ -69,7 +69,7 @@ class BillController extends Controller
         $data['due_on'] = Carbon::createFromFormat('d/m/Y', $data['due_on'])->format('Y-m-d');
         $data['auto_pay'] = (isset($data['auto_pay']) && $data['auto_pay'] === 'true') ? true : false;
         $bill = Bill::create($data);
-        $this->edit($bill->id);
+        return $this->edit($bill->id);
     }
 
     /**
@@ -126,7 +126,7 @@ class BillController extends Controller
         $bill->fill($data)
             ->update();
 
-        $this->edit($bill->id);
+        return $this->edit($bill->id);
     }
 
     /**

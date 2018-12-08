@@ -26,4 +26,6 @@ mix.js('resources/assets/js/app.js', 'public/js')
         'node_modules/mdbootstrap/js/popper.min.js',
         'node_modules/mdbootstrap/js/mdb.min.js',
         'node_modules/jquery-ui/ui/widgets/datepicker.js',
-   ], 'public/js/lib.js');
+   ], 'public/js/lib.js')
+   .copyDirectory('node_modules/mdbootstrap/font', 'public/font')
+   ;

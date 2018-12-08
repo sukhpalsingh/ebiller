@@ -9,12 +9,12 @@
             <div class="card-body px-lg-5 pt-0">
                 <form style="color: #757575;"
                     name="bill-category-form"
-                    action="/bill-categories{{ isset($billCategory) ? '/' . $billCategory->id : '' }}"
+                    action="/bill-categories{{ isset($billCategory->id) ? '/' . $billCategory->id : '' }}"
                     enctype="multipart/form-data"
                     method="POST"
                 >
                     {{ csrf_field() }}
-                    @if (isset($billCategory))
+                    @if (isset($billCategory->id))
                         {{ method_field('PUT') }}
                     @endif
                     <div class="form-group row mt-3">

@@ -11,7 +11,7 @@
                             <th class="text-right" colspan="4">
                                 <a
                                     class="btn btn-primary btn-rounded waves-effect waves-light"
-                                    href="/accounts/create"
+                                    href="/bill-categories/create"
                                 >Add Category</a>
                             </th>
                         </tr>

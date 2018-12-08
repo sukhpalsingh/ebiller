@@ -26,7 +26,7 @@ class BillCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('bill-categories.form', ['tab' => 'bills', 'billCategory' => BillCategory::class]);
     }
 
     /**
@@ -37,7 +37,12 @@ class BillCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $billCategory = BillCategory::create($request->all());
+        $request->file('icon')->storeAs(
+            'icons',
+            'account_' . $billCategory->id
+        );
+        return $this->edit($billCategory->id);
     }
 
     /**

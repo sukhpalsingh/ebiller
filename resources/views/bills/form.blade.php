@@ -24,7 +24,7 @@
                                 class="form-control"
                                 id="due_on"
                                 name="due_on"
-                                value="{{ $bill->due_on ? $bill->due_on->format('d/m/Y') : ''}}"
+                                value="{{ isset($bill->due_on) ? $bill->due_on->format('d/m/Y') : ''}}"
                             >
                         </div>
                     </div>

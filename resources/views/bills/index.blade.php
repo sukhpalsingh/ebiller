@@ -20,11 +20,13 @@
                                         <tr>
                                             <td width="100">{{ $bill -> due_on }}</td>
                                             <td width="200" class="text-center">
+                                                @if (isset($bill -> billCategory -> icon))
                                                 <img
                                                     src="{{ asset('storage/' . $bill -> billCategory -> icon -> path) }}"
                                                     class="img-thumbnail border-0"
                                                     style="height: 60px"
                                                 >
+                                                @endif
                                             </td>
                                             <td class="lead">
                                                 {{ $bill -> billCategory -> name }}

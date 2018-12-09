@@ -20,7 +20,10 @@
                                         <tr>
                                             <td width="100">{{ $transaction -> date }}</td>
                                             <td class="lead">
-                                                {{ $transaction -> type }}
+                                                {{ ucfirst($transaction -> type) }}
+                                            </td>
+                                            <td>
+                                                {{ $transaction -> description }}
                                             </td>
                                             <td width="200" class="text-center">
                                                 <p class="font-weight-bold">${{ $transaction -> amount }}</p>

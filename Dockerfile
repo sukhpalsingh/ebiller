@@ -17,5 +17,7 @@ RUN docker-php-ext-install mbstring pdo_mysql
 RUN curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
 
+RUN ln -s /var/www/html/storage/app/public /var/www/html/public/storage
+
 EXPOSE 80
 CMD ["apache2-foreground"]

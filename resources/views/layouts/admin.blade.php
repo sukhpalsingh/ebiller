@@ -40,13 +40,10 @@
                                 <a class="nav-link waves-effect {{ $tab === 'home' ? ' ' : ' text-muted'}}" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link waves-effect {{ $tab === 'bills' ? 'active' : ' text-muted'}}" href="/bills">Bills</a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link waves-effect {{ $tab === 'accounts' ? 'active' : ' text-muted'}}" href="/accounts">Accounts</a>
+                                <a class="nav-link waves-effect {{ $tab === 'users' ? ' ' : ' text-muted'}}" href="/users">Users</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link waves-effect {{ $tab === 'files' ? 'active' : ' text-muted'}}" href="/files">Files</a>
+                                <a class="nav-link waves-effect {{ $tab === 'preferences' ? ' ' : ' text-muted'}}" href="/prefrences">Preferences</a>
                             </li>
                         </ul>
                     </div>
@@ -63,7 +60,7 @@
                                 </a>
 
                                 <div class="dropdown-menu">
-                                    <a href="/preferences/{{ Auth::user()->id }}/edit"
+                                    <a href="/preferences"
                                         class="dropdown-item">
                                         Preferences
                                     </a>

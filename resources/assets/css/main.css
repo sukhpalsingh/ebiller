@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Caption');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+.header {
+    background: rgba(0,0,0,.04);
+    height: 88px;
+    padding-top: 29px;
+}
+
+.heading {
+    font-size: 20px;
+    font-family: 'PT Sans Caption', sans-serif;
+}
+
+.content {
+    margin-top: 70px;
+}

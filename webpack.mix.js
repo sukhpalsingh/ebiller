@@ -11,21 +11,20 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
+mix
+// .js('resources/assets/js/app.js', 'public/js')
+//    .sass('resources/assets/sass/app.scss', 'public/css')
    .styles([
-       'node_modules/mdbootstrap/css/bootstrap.min.css',
-       'node_modules/mdbootstrap/css/mdb.min.css',
-       'node_modules/mdbootstrap/css/style.min.css',
-       'node_modules/jquery-ui/themes/base/theme.css',
-       'node_modules/jquery-ui/themes/base/datepicker.css',
+        'node_modules/bootstrap/dist/css/bootstrap.min.css',
+        'node_modules/jquery-ui/themes/base/theme.css',
+        'node_modules/jquery-ui/themes/base/datepicker.css',
+        'resources/assets/css/main.css',
    ], 'public/css/lib.css')
    .scripts([
-        'node_modules/mdbootstrap/js/jquery-3.3.1.min.js',
-        'node_modules/mdbootstrap/js/bootstrap.min.js',
-        'node_modules/mdbootstrap/js/popper.min.js',
-        'node_modules/mdbootstrap/js/mdb.min.js',
+        'node_modules/jquery/dist/jquery.min.js',
+        'node_modules/popper.js/dist/popper.min.js',
+        'node_modules/bootstrap/dist/js/bootstrap.min.js',
         'node_modules/jquery-ui/ui/widgets/datepicker.js',
    ], 'public/js/lib.js')
-   .copyDirectory('node_modules/mdbootstrap/font', 'public/font')
+   .copyDirectory('node_modules/jquery-ui/themes/base/images', 'public/css/images')
    ;

@@ -62,7 +62,7 @@ class FileController extends Controller
 
         $path = storage_path('app/public/' . $file->path);
         return response()->file($path, [
-            'Content-Type' => 'application/pdf',
+            // 'Content-Type' => 'application/pdf',
             'Content-Disposition' => 'inline; filename="Bill.pdf"'
         ]);
     }

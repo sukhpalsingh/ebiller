@@ -21,11 +21,13 @@
         <header>
 
             <!-- Navbar -->
-            <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+            <nav class="main-nav navbar navbar-light navbar-expand-lg mt-2 mb-2">
+            <!-- <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar"> -->
                 <div class="container">
 
-                    <a class="navbar-brand waves-effect" href="/">
-                        <strong class="blue-text">Ebiller</strong>
+                    <a class="navbar-brand" href="/">
+                        <i class="fas fa-bolt header-text"></i>
+                        <strong class="header-text">Ebiller</strong>
                     </a>
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -35,18 +37,21 @@
 
                     @if (isset($tab))
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mr-auto">
+                        <ul class="navbar-nav ml-auto mr-5">
                             <li class="nav-item">
-                                <a class="nav-link waves-effect {{ $tab === 'home' ? ' ' : ' text-muted'}}" href="/">Home</a>
+                                <a class="nav-link {{ $tab === 'home' ? ' ' : ''}}" href="/">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link waves-effect {{ $tab === 'bills' ? 'active' : ' text-muted'}}" href="/bills">Bills</a>
+                                <a class="nav-link {{ $tab === 'bills' ? '' : ''}}" href="/bills">Bills</a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link waves-effect {{ $tab === 'accounts' ? 'active' : ' text-muted'}}" href="/accounts">Accounts</a>
+                                <a class="nav-link {{ $tab === 'expenses' ? '' : ''}}" href="/expenses">Expenses</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link {{ $tab === 'accounts' ? '' : ''}}" href="/accounts">Accounts</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link waves-effect {{ $tab === 'files' ? 'active' : ' text-muted'}}" href="/files">Files</a>
+                                <a class="nav-link {{ $tab === 'files' ? '' : ''}}" href="/files">Files</a>
                             </li>
                         </ul>
                     </div>
@@ -86,7 +91,7 @@
 
         </header>
 
-        <main class="mt-5 pt-5">
+        <main class="content">
             <div class="container-fluild">
                 @yield('content')
             </div>

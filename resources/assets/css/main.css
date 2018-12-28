@@ -1,26 +1,94 @@
 @import url('https://fonts.googleapis.com/css?family=PT+Sans+Caption');
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Poppins');
 
+.header-text {
+    color: #377dff;
+    font-size: 30px;
+}
 
 body {
     font-family: 'Roboto', sans-serif;
+    background: #f8f9fa !important;
+}
+
+p {
+    color: #77838f;
 }
 
 .bg-light {
     background-color: #f8f9fa !important;
 }
 
-.header {
-    background: rgba(0,0,0,.04);
-    height: 88px;
-    padding-top: 29px;
-}
-
 .heading {
-    font-size: 20px;
-    font-family: 'PT Sans Caption', sans-serif;
+    color: #fff;
+    font-size: 30px;
+    font-family: 'Poppins', sans-serif;
 }
 
-.content {
-    margin-top: 70px;
+.font-weight-semi-bold {
+    font-weight: 600 !important;
+}
+
+.main-nav .nav-item {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.btn-soft-primary {
+    color: #377dff;
+    background: rgba(55, 125, 255, 0.1);
+    border-color: transparent;
+}
+
+.btn-soft-primary:hover {
+    color: #fff;
+    background: #377dff;
+    box-shadow: 0 4px 11px rgba(55, 125, 255, 0.35);
+}
+
+.btn-soft-white {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: transparent;
+}
+
+.btn-soft-white[href]:hover, .btn-soft-white[href]:focus, .btn-soft-white[href]:active, .btn-soft-white[href].active, .btn-soft-white[type]:hover, .btn-soft-white[type]:focus, .btn-soft-white[type]:active, .btn-soft-white[type].active {
+    color: #1e2022;
+    background: #fff;
+    box-shadow: 0 4px 11px rgba(255, 255, 255, 0.35);
+}
+
+.btn-soft-white[href].disabled, .btn-soft-white[href]:disabled, .btn-soft-white[type].disabled, .btn-soft-white[type]:disabled {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+}
+
+.breadcrumb-white {
+    background-color: transparent;
+}
+
+.breadcrumb-white .breadcrumb-item {
+    color: #fff;
+}
+
+.breadcrumb-white .breadcrumb-item + .breadcrumb-item::before {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.breadcrumb-white .breadcrumb-link {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.breadcrumb-no-gutter {
+    padding: 0;
+}
+
+.gradient-1 {
+    background-image: linear-gradient(150deg, #2d1582 0%, #19a0ff 100%);
+    background-repeat: repeat-x;
+}
+
+.full-height {
+    height: 100%;
 }

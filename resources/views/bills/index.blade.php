@@ -1,61 +1,70 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-10 offset-md-1">
+
+    <div class="bg-primary">
+        <div class="container pt-4 pb-4">
+            <div class="d-sm-flex justify-content-sm-between align-items-sm-center">
+                <div class="mb-3 mb-sm-0">
+                    <ol class="breadcrumb breadcrumb-white breadcrumb-no-gutter mb-0">
+                        <li class="breadcrumb-item"><a class="breadcrumb-link" href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Bills</li>
+                    </ol>
+                </div>
+
+                <div class="float-right">
+                    <a class="btn btn-sm btn-soft-white" href="/bill-categories">
+                    <i class="fas fa-book"></i>
+                        Bill Categories
+                    </a>
+                    <a class="btn btn-sm btn-soft-white" href="/expenses/create">
+                        <i class="fas fa-plus"></i>
+                        Create New
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-light">
+        <div class="container pt-5 pb-5">
             <div class="card">
                 <div class="card-body p-0">
                     <div class="table-responsive">
                         <table class="table">
-                            <thead>
-                                <tr>
-                                    <th colspan="5" class="light-blue lighten-4">
-                                        <h3>Bills</h3>
-                                    </th>
-                                </tr>
-                            </thead>
                             <tbody>
                                 @if ($bills->count() > 0)
                                     @foreach ($bills as $bill)
                                         <tr>
-                                            <td width="100">{{ $bill -> due_on }}</td>
-                                            <td width="200" class="text-center">
+                                            <td width="300" class="align-middle">
+                                                <p class="mb-1">{{ $bill -> due_on -> format('l') }}</p>
+                                                <p>{{ $bill -> due_on -> format('jS F Y') }}</p>
+                                            </td>
+                                            <td width="200" class="text-center align-middle">
                                                 @if (isset($bill -> billCategory -> icon))
                                                 <img
                                                     src="{{ asset('storage/' . $bill -> billCategory -> icon -> path) }}"
                                                     class="img-thumbnail border-0"
-                                                    style="height: 60px"
+                                                    style="height: 100px"
                                                 >
                                                 @endif
                                             </td>
-                                            <td class="lead">
+                                            <td class="lead align-middle">
                                                 {{ $bill -> billCategory -> name }}
                                             </td>
-                                            <td width="200" class="text-center">
-                                                <p class="font-weight-bold">${{ $bill -> amount }}</p>
-                                                <mark>{{ $bill -> status }}</mark>
+                                            <td width="200" class="text-center align-middle">
+                                                <p class="font-weight-bold mb-1">${{ $bill -> amount }}</p>
+                                                <p class="text-danger">{{ $bill -> status }}</p>
                                             </td>
-                                            <td width="20">
+                                            <td width="20" class="align-middle">
                                                 <a href="/bills/{{ $bill -> id }}/edit" class="btn light-blue lighten-3 btn-sm">
-                                                    Edit
+                                                    <i class="fas fa-edit text-primary"></i>
                                                 </a>
                                             </td>
                                         </tr>
                                     @endforeach
                                 @endif
                             </tbody>
-                            <tr>
-                                <th class="text-right" colspan="5">
-                                    <a
-                                        class="btn light-blue lighten-3 btn-rounded waves-effect waves-light btn-sm"
-                                        href="/bill-categories"
-                                    >Bill Categories</a>
-                                    <a
-                                        class="btn light-blue lighten-3 btn-rounded waves-effect waves-light btn-sm"
-                                        href="/bills/create"
-                                    >Add Bill</a>
-                                </th>
-                            </tr>
                         </table>
                     </div>
                 </div>

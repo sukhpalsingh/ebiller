@@ -48,6 +48,9 @@
                                 <a class="nav-link {{ $tab === 'expenses' ? '' : ''}}" href="/expenses">Expenses</a>
                             </li>
                             <li class="nav-item ">
+                                <a class="nav-link {{ $tab === 'accounts' ? '' : ''}}" href="/authorisations">Authorisations</a>
+                            </li>
+                            <li class="nav-item ">
                                 <a class="nav-link {{ $tab === 'accounts' ? '' : ''}}" href="/accounts">Accounts</a>
                             </li>
                             <li class="nav-item">

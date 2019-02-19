@@ -2,10 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Authorisation;
 use Illuminate\Http\Request;
 
 class AuthorisationController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +24,8 @@ class AuthorisationController extends Controller
      */
     public function index()
     {
-        //
+        $authorisations = Authorisation::get();
+        return view('authorisations.index', ['tab' => 'authorisations', 'authorisations' => $authorisations]);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Bill;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home', ['tab' => 'home']);
+        $pendingBills = Bill::orderBy('due_on', 'desc')
+            ->where('status', 'Pending')
+            ->get();
+        return view('home', ['tab' => 'home', 'pendingBills' => $pendingBills]);
     }
 }

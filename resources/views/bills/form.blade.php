@@ -93,8 +93,12 @@
                                         <label class="custom-file-label" for="file">Choose file</label>
                                     </div>
                                 @else
-                                    <a href="/files/{{ $bill->file->id }}" class="btn btn-link text-left" target="_blank">View</a>
-                                    <a href="/files/{{ $bill->file->id }}/delete" class="btn btn-link text-left" target="_blank">Delete</a>
+                                    <a href="/files/{{ $bill->file->id }}" class="btn btn-link text-left text-secondary" target="_blank">
+                                        <i class="fas fa-paperclip h4"></i>
+                                    </a>
+                                    <a href="/files/{{ $bill->file->id }}/delete" class="btn btn-link text-left text-info" target="_blank">
+                                        <i class="far fa-trash-alt h4"></i>
+                                    </a>
                                 @endif
                             </div>
                         </div>

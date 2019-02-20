@@ -53,7 +53,7 @@
                                     @foreach ($categories as $category)
                                         <option
                                             value="{{$category -> id }}"
-                                            @if((int) $category->id === (int) $bill->bill_category_id) selected="selected" @endif
+                                            @if(isset($bill->id) && (int) $category->id === (int) $bill->bill_category_id) selected="selected" @endif
                                         >{{ $category -> name }}</option>
                                     @endforeach
                                 </select>
@@ -70,7 +70,7 @@
                                     @foreach ($statusOptions as $statusOption)
                                         <option
                                             value="{{$statusOption }}"
-                                            @if($statusOption === $bill->status) selected="selected" @endif
+                                            @if(isset($bill->id) && $statusOption === $bill->status) selected="selected" @endif
                                         >{{ $statusOption }}</option>
                                     @endforeach
                                 </select>

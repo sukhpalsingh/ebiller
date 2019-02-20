@@ -17,7 +17,7 @@
                     <i class="fas fa-book"></i>
                         Bill Categories
                     </a>
-                    <a class="btn btn-sm btn-soft-white" href="/expenses/create">
+                    <a class="btn btn-sm btn-soft-white" href="/bills/create">
                         <i class="fas fa-plus"></i>
                         Create New
                     </a>

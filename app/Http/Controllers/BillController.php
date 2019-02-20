@@ -33,7 +33,7 @@ class BillController extends Controller
      */
     public function index()
     {
-        $bills = Bill::get();
+        $bills = Bill::orderBy('due_on', 'desc')->get();
         return view('bills.index', ['tab' => 'bills', 'bills' => $bills]);
     }
 

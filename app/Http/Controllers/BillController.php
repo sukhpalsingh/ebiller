@@ -63,13 +63,14 @@ class BillController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, FileService $fileService)
     {
         $data = $request->all();
         $data['due_on'] = Carbon::createFromFormat('d/m/Y', $data['due_on'])->format('Y-m-d');
         $data['auto_pay'] = (isset($data['auto_pay']) && $data['auto_pay'] === 'true') ? true : false;
+        $data['file_id'] = $fileService->save($request);
         $bill = Bill::create($data);
-        return $this->edit($bill->id);
+        return redirect('/bills/' . $bill->id . '/edit');
     }
 
     /**
@@ -119,14 +120,18 @@ class BillController extends Controller
             ->firstOrFail();
 
         $data = $request->all();
-        $data['file_id'] = $fileService->save($request);
+
+        if (empty($bill->file_id)) {
+            $data['file_id'] = $fileService->save($request);
+        }
+
         $data['due_on'] = Carbon::createFromFormat('d/m/Y', $data['due_on'])->format('Y-m-d');
         $data['auto_pay'] = (isset($data['auto_pay']) && $data['auto_pay'] === 'true') ? true : false;
 
         $bill->fill($data)
             ->update();
 
-        return $this->edit($bill->id);
+        return redirect('/bills/' . $bill->id . '/edit');
     }
 
     /**

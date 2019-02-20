@@ -51,7 +51,10 @@
                             <div class="col-sm-5">
                                 <select id="bill_category_id" name="bill_category_id" class="form-control">
                                     @foreach ($categories as $category)
-                                    <option value="{{$category -> id }}">{{ $category -> name }}</option>
+                                        <option
+                                            value="{{$category -> id }}"
+                                            @if((int) $category->id === (int) $bill->bill_category_id) selected="selected" @endif
+                                        >{{ $category -> name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -65,7 +68,10 @@
                             <div class="col-sm-5">
                                 <select id="status" name="status" class="form-control">
                                     @foreach ($statusOptions as $statusOption)
-                                    <option value="{{$statusOption }}">{{ $statusOption }}</option>
+                                        <option
+                                            value="{{$statusOption }}"
+                                            @if($statusOption === $bill->status) selected="selected" @endif
+                                        >{{ $statusOption }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -95,7 +101,7 @@
                         <div class="form-group row">
                             <div class="col-sm-10 offset-sm-2">
                                 <input type="checkbox" class="form-control-input" id="auto_pay" name="auto_pay" value="true"
-                                    {{ isset($bill -> auto_pay) ? 'checked="checked"' : ''}}>
+                                    {{ isset($bill -> auto_pay) && $bill->auto_pay ? 'checked="checked"' : ''}}>
                                 <label for="auto_pay" class="col-sm-2 col-form-label">Auto Pay</label>
                             </div>
                         </div>

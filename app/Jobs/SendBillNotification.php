@@ -39,6 +39,11 @@ class SendBillNotification
             ->orWhere('due_on', Carbon::today()->format('Y-m-d'))
             ->get();
 
+        // skip sending notification if there is no pending bills due today or tomorrow
+        if ($pendingBills->count() === 0) {
+            return;
+        }
+
         $user = User::first();
         $user->notify(new BillPending($pendingBills));
     }

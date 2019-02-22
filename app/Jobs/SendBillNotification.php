@@ -35,7 +35,7 @@ class SendBillNotification
     {
         date_default_timezone_set('Australia/Brisbane');
 
-        $pendingBills = Bill::where('due_on', Carbon::today()->subDays(1)->format('Y-m-d'))
+        $pendingBills = Bill::where('due_on', Carbon::today()->addDay()->format('Y-m-d'))
             ->orWhere('due_on', Carbon::today()->format('Y-m-d'))
             ->get();
 

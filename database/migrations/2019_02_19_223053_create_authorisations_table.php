@@ -15,6 +15,7 @@ class CreateAuthorisationsTable extends Migration
     {
         Schema::create('authorisations', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('type');
             $table->date('valid_from');
             $table->date('valid_until');
             $table->integer('notify_days');

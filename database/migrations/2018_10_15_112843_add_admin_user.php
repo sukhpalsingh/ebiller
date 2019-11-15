@@ -28,6 +28,7 @@ class AddAdminUser extends Migration
      */
     public function down()
     {
-        User::delete();
+        $user = User::where('email', 'admin@ebiller.tk');
+        $user->delete();
     }
 }

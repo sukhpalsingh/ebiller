@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="bg-primary">
-        <div class="container pt-4 pb-4">
+        <div class="container pt-3 pb-3">
             <div class="d-sm-flex justify-content-sm-between align-items-sm-center">
                 <div class="mb-3 mb-sm-0">
                     <ol class="breadcrumb breadcrumb-white breadcrumb-no-gutter mb-0">
@@ -20,23 +20,26 @@
         </div>
     </div>
 
-    <div class="bg-light">
+    <div class="bg-gray">
         <div class="container pt-5 pb-5">
             <div class="card">
                 @if ($authorisations->count() > 0)
                     <table id="example" class="table table-striped table-bordered mb-0" style="width:100%">
                         <thead class="table-light">
                             <tr>
-                                <th>Spent On</th>
-                                <th>Spent At</th>
-                                <th></th>
+                                <th>Type</th>
+                                <th>Valid From</th>
+                                <th>Valid To</th>
+                                <th>Notify Before</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($authorisations as $authorisation)
                                 <tr>
+                                    <td>{{ $types[$authorisation->type] }}</td>
                                     <td>{{ $authorisation->valid_from->format('d/m/Y') }}</td>
-                                    <td>{{ $authorisation->valid_until }}</td>
+                                    <td>{{ $authorisation->valid_until->format('d/m/Y') }}</td>
+                                    <td>{{ $notifyPeriods[$authorisation->notify_days] }}</td>
                                     <td>
                                         <a href="/authorisations/{{ $authorisation->id }}/edit" class="text-secondary">Edit</a>
                                     </td>

@@ -18,7 +18,7 @@
         </div>
     </div>
 
-    <div class="bg-light">
+    <div class="bg-gray">
         <div class="container pt-5 pb-5">
             <form style="color: #757575;" name="authorisation-form"
                 action="/authorisations{{ isset($authorisation->id) ? '/' . $authorisation->id : '' }}"
@@ -26,27 +26,7 @@
                 enctype="multipart/form-data"
             >
                 <div class="row header">
-                    <div class="col-sm-4 light-gray pl-5 pr-5">
-                        @if (!empty($authorisation->file_id))
-                            <div class="file-image">
-                                <img src="/files/{{ $authorisation->file_id }}" class="img-fluid" />
-                                <button type="button" class="btn btn-secondary mt-2" onclick="">Remove</button>
-                            </div>
-                        @else
-                            <div class="imageupload panel panel-default">
-                                <div class="file-tab panel-body">
-                                    <br />
-                                    <label class="btn btn-primary btn-file mt-2">
-                                        <span>Browse</span>
-                                        <!-- The file is stored here. -->
-                                        <input type="file" name="file">
-                                    </label>
-                                    <button type="button" class="btn btn-secondary">Remove</button>
-                                </div>
-                            </div>
-                        @endif
-                    </div>
-                    <div class="col-sm-8 light-gray pl-5 pr-5">
+                    <div class="col-sm-12 light-gray">
                         
                             {{ csrf_field() }}
                             @if (isset($authorisation->id))

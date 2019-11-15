@@ -17,7 +17,7 @@ class CreateAuthorisationsTable extends Migration
             $table->increments('id');
             $table->string('type');
             $table->date('valid_from');
-            $table->date('valid_until');
+            $table->date('valid_until')->nullable();
             $table->integer('notify_days');
             $table->unsignedInteger('file_id')->nullable();
             $table->unsignedInteger('expense_id')->nullable();

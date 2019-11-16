@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="bg-primary">
-        <div class="container pt-4 pb-4">
+        <div class="container pt-3 pb-3">
             <div class="d-sm-flex justify-content-sm-between align-items-sm-center">
                 <div class="mb-3 mb-sm-0">
                     <ol class="breadcrumb breadcrumb-white breadcrumb-no-gutter mb-0">
@@ -18,8 +18,8 @@
         </div>
     </div>
 
-    <div class="bg-gray">
-        <div class="container pt-5 pb-5">
+    <div class="mt-5">
+        <div class="container pt-5 pb-5 bg-light">
             <form style="color: #757575;" name="authorisation-form"
                 action="/authorisations{{ isset($authorisation->id) ? '/' . $authorisation->id : '' }}"
                 method="POST"

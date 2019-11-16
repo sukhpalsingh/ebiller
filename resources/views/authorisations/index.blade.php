@@ -24,7 +24,7 @@
         <div class="container pt-5 pb-5">
             <div class="card">
                 @if ($authorisations->count() > 0)
-                    <table id="example" class="table table-striped table-bordered mb-0" style="width:100%">
+                    <table class="table table-striped mb-0">
                         <thead class="table-light">
                             <tr>
                                 <th>Type</th>

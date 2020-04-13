@@ -27,11 +27,11 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->job(new SendBillNotification)
-            ->daily()
+            ->dailyAt('20:00')
             ->timezone('Australia/Brisbane');
 
         $schedule->job(new NotifyExpiryAuthorisation)
-            ->daily()
+            ->dailyAt('20:00')
             ->timezone('Australia/Brisbane');
     }
 

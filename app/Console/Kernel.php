@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Jobs\NotifyExpiryAuthorisation;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use App\Jobs\SendBillNotification;
@@ -26,6 +27,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->job(new SendBillNotification)
+            ->daily()
+            ->timezone('Australia/Brisbane');
+
+        $schedule->job(new NotifyExpiryAuthorisation)
             ->daily()
             ->timezone('Australia/Brisbane');
     }

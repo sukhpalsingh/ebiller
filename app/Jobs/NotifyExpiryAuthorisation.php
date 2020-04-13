@@ -36,8 +36,8 @@ class NotifyExpiryAuthorisation implements ShouldQueue
     {
       date_default_timezone_set('Australia/Brisbane');
 
-      $expiringAuthorisations = Authorisation::where('valid_until', DB::raw('valid_until - notify_days <= CURRENT_DATE'))
-        ->orWhere('valid_until', '>=', Carbon::today()->subDays(7)->format('Y-m-d'))
+      $expiringAuthorisations = Authorisation::whereRaw('DATEDIFF(valid_until, CURRENT_DATE) = notify_days')
+        ->orWhereRaw('DATEDIFF(valid_until, CURRENT_DATE)) <= 7')
         ->distinct()
         ->get();
 

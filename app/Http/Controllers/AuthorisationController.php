@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class AuthorisationController extends Controller
 {
-    private $types = [
+    public static $types = [
         'licence' => 'Licence',
         'passport' => 'Passport'
     ];
@@ -45,7 +45,7 @@ class AuthorisationController extends Controller
         return view('authorisations.index', [
             'tab' => 'authorisations',
             'authorisations' => $authorisations,
-            'types' => $this->types,
+            'types' => self::$types,
             'notifyPeriods' => $this->notifyPeriods
         ]);
     }
@@ -59,7 +59,7 @@ class AuthorisationController extends Controller
     {
         return view('authorisations.form', [
             'tab' => 'authorisations',
-            'types' => $this->types,
+            'types' => self::$types,
             'notifyPeriods' => $this->notifyPeriods
         ]);
     }
@@ -105,7 +105,7 @@ class AuthorisationController extends Controller
         return view('authorisations.form', [
             'tab' => 'authorisations',
             'authorisation' => $authorisation,
-            'types' => $this->types,
+            'types' => self::$types,
             'notifyPeriods' => $this->notifyPeriods
         ]);
     }

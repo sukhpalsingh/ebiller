@@ -3,15 +3,10 @@
 namespace App\Notifications;
 
 use App\Http\Controllers\AuthorisationController;
-use Illuminate\Bus\Queueable;
-use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class AuthorisationExpiring extends Notification
+class AuthorisationExpiring
 {
-    use Queueable;
-
     private $expiringAuthorisations;
 
     /**

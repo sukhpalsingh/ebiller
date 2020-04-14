@@ -35,8 +35,8 @@ class SendBillNotification
     {
         date_default_timezone_set('Australia/Brisbane');
 
-        $pendingBills = Bill::where('due_on', Carbon::today()->addDay()->format('Y-m-d'))
-            ->orWhere('due_on', Carbon::today()->format('Y-m-d'))
+        $pendingBills = Bill::where('due_on', '<=', Carbon::tomorrow()->format('Y-m-d'))
+            ->where('status', 'Pending')
             ->get();
 
         // skip sending notification if there is no pending bills due today or tomorrow

@@ -3,9 +3,10 @@
 namespace App\Notifications;
 
 use App\Http\Controllers\AuthorisationController;
+use Illuminate\Notifications\Notification;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class AuthorisationExpiring
+class AuthorisationExpiring extends Notification
 {
     private $expiringAuthorisations;
 

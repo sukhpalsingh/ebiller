@@ -13,7 +13,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\DB;
 
-class NotifyExpiryAuthorisation implements ShouldQueue
+class NotifyExpiryAuthorisation
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -37,7 +37,7 @@ class NotifyExpiryAuthorisation implements ShouldQueue
       date_default_timezone_set('Australia/Brisbane');
 
       $expiringAuthorisations = Authorisation::whereRaw('DATEDIFF(valid_until, CURRENT_DATE) = notify_days')
-        ->orWhereRaw('DATEDIFF(valid_until, CURRENT_DATE)) <= 7')
+        ->orWhereRaw('DATEDIFF(valid_until, CURRENT_DATE) <= 7')
         ->distinct()
         ->get();
 
